@@ -36,7 +36,7 @@ CONFIG_SCHEMA = vol.Schema({
     })
 }, extra=vol.ALLOW_EXTRA)
 
-XIAOMI_COMPONENTS = ['binary_sensor', 'sensor', 'switch', 'light']
+XIAOMI_COMPONENTS = ['binary_sensor', 'sensor', 'switch', 'light', 'cover']
 PY_XIAOMI_GATEWAY = None
 
 # Shortcut for the logger
@@ -327,6 +327,7 @@ class XiaomiGateway:
         binary_sensors = ['magnet', 'motion', 'switch', '86sw1', '86sw2', 'cube', 'smoke', 'natgas']
         switches = ['plug', 'ctrl_neutral1', 'ctrl_neutral2', '86plug']
         gateway = ['gateway']
+        covers = ['curtain']
 
         for sid in sids:
             cmd = '{"cmd":"read","sid":"' + sid + '"}'
@@ -348,6 +349,8 @@ class XiaomiGateway:
                 device_type = 'switch'
             elif model in gateway:
                 device_type = 'gateway'
+            elif model in covers:
+                device_type = 'cover'
             else:
                 _LOGGER.error('Unsupported devices : %s', model)
                 continue
