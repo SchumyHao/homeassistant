@@ -36,7 +36,7 @@ CONFIG_SCHEMA = vol.Schema({
     })
 }, extra=vol.ALLOW_EXTRA)
 
-XIAOMI_COMPONENTS = ['binary_sensor', 'sensor', 'switch', 'light']
+XIAOMI_COMPONENTS = ['binary_sensor', 'sensor', 'switch', 'light', 'cover']
 PY_XIAOMI_GATEWAY = None
 
 # Shortcut for the logger
@@ -341,6 +341,7 @@ class XiaomiGateway:
         binary_sensors = ['magnet', 'motion', 'switch', '86sw1', '86sw2', 'cube', 'smoke', 'natgas']
         switches = ['plug', 'ctrl_neutral1', 'ctrl_neutral2', '86plug']
         lights = ['gateway']
+        covers = ['curtain']
 
         for sid in sids:
             cmd = '{"cmd":"read","sid":"' + sid + '"}'
@@ -379,6 +380,11 @@ class XiaomiGateway:
             if model in lights:
                 device_type = 'light'
                 #Ignore switches without API key
+                if self.key != DEFAULT_KEY:
+                    self.devices[device_type].append(xiaomi_device)
+
+            if model in covers:
+                device_type = 'cover'
                 if self.key != DEFAULT_KEY:
                     self.devices[device_type].append(xiaomi_device)
 
