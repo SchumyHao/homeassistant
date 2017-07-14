@@ -25,6 +25,7 @@ This is an complete Home Assistant component for Xiaomi Gateway. It allows you t
 - Smoke Detector (reports alarm and density)
 - Gateway (Light, Illumination Sensor, Ringtone play)
 - Battery
+- Curtain
 
 What's not available?
 
