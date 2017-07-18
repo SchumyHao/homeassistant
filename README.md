@@ -26,6 +26,8 @@ This is an complete Home Assistant component for Xiaomi Gateway. It allows you t
 - Cube
 - Gateway Light
 - Curtain
+- Temprature Humidity Sensor
+- Aqara Temprature Humidity Pressure sensor
 
 What's not available?
 - Gateway Sensor

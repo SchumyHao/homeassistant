@@ -24,6 +24,13 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
                 humi_info = SensorInfo('Humidity', 'humidity', '%', 100, 0, 0.01)
                 devices.append(XiaomiSensor(device, temp_info, gateway))
                 devices.append(XiaomiSensor(device, humi_info, gateway))
+            elif device['model'] == 'weather.v1':
+                temp_info = SensorInfo('Temperature', 'temperature', TEMP_CELSIUS, 100, 0, 0.01)
+                humi_info = SensorInfo('Humidity', 'humidity', '%', 100, 0, 0.01)
+                pres_info = SensorInfo('Pressure', 'pressure', 'KPa', 110, 30, 0.001)
+                devices.append(XiaomiSensor(device, temp_info, gateway))
+                devices.append(XiaomiSensor(device, humi_info, gateway))
+                devices.append(XiaomiSensor(device, pres_info, gateway))
             elif device['model'] == 'gateway':
                 illu_info = SensorInfo('Illuminance', 'illumination', 'lx', 100000, 0, 1)
                 devices.append(XiaomiSensor(device, illu_info, gateway))
