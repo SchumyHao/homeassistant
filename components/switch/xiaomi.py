@@ -81,7 +81,10 @@ class XiaomiGenericSwitch(XiaomiDevice, SwitchDevice):
         self.xiaomi_hub.write_to_hub(self._sid, self._data_key, 'off')
 
     def parse_data(self, data):
-        """Parse data sent by gateway"""
+        """Parse data sent by gateway"""
+        if LOAD_POWER in data:
+            self._load_power = float(data[LOAD_POWER])
+
         if IN_USE in data:
             self._in_use = int(data[IN_USE])
             if not self._in_use:
@@ -89,9 +92,6 @@ class XiaomiGenericSwitch(XiaomiDevice, SwitchDevice):
 
         if POWER_CONSUMED in data:
             self._power_consumed = int(data[POWER_CONSUMED])
-
-        if LOAD_POWER in data:
-            self._load_power = int(data[LOAD_POWER])
 
         value = data.get(self._data_key)
         if value is None:
