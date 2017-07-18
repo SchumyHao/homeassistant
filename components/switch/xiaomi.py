@@ -34,6 +34,11 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
             elif model == 'ctrl_neutral2':
                 devices.append(XiaomiGenericSwitch(device, 'Wall Switch Left', 'channel_0', gateway))
                 devices.append(XiaomiGenericSwitch(device, 'Wall Switch Right', 'channel_1', gateway))
+            elif model == 'ctrl_ln1':
+                devices.append(XiaomiGenericSwitch(device, 'Wall Switch LN', 'channel_0', gateway))
+            elif model == 'ctrl_ln2':
+                devices.append(XiaomiGenericSwitch(device, 'Wall Switch LN Left', 'channel_0', gateway))
+                devices.append(XiaomiGenericSwitch(device, 'Wall Switch LN Right', 'channel_1', gateway))
             elif (model == '86plug'):
                 devices.append(XiaomiGenericSwitch(device, 'Wall Plug', 'status', gateway))
     add_devices(devices)
@@ -71,7 +76,8 @@ class XiaomiGenericSwitch(XiaomiDevice, SwitchDevice):
                  ATTR_LOAD_POWER: self._load_power,
                  ATTR_POWER_CONSUMED: self._power_consumed}
         attrs.update(super().device_state_attributes)
-        return attrs
+        return attrs
+
     def turn_on(self, **kwargs):
         """Turn the switch on."""
         self.xiaomi_hub.write_to_hub(self._sid, self._data_key, 'on')

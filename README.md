@@ -16,6 +16,8 @@ This is an complete Home Assistant component for Xiaomi Gateway. It allows you t
 - Plug
 - Aqara Wall Switch (Single)
 - Aqara Wall Switch (Double)
+- Aqare Wall Switch LN (Single)
+- Aqara Wall Switch LN (Double)
 - Aqara Wireless Switch (Single)
 - Aqara Wireless Switch (Double)
 - Cube
