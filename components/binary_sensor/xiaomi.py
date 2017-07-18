@@ -33,7 +33,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     for (ip_add, gateway) in gateways.items():
         for device in gateway.devices['binary_sensor']:
             model = device['model']
-            if model == 'motion':
+            if ((model == 'motion') or (model == 'sensor_motion.aq2')):
                 devices.append(XiaomiMotionSensor(device, hass, gateway))
             elif ((model == 'magnet') or (model == 'sensor_magnet.aq2')):
                 devices.append(XiaomiDoorSensor(device, gateway))

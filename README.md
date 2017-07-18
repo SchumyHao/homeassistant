@@ -11,6 +11,7 @@ Description
 This is an complete Home Assistant component for Xiaomi Gateway. It allows you to integrate the following devices into HA
 
 - Motion Sensor
+- Aqara Motion Light Sensor
 - Door and Window Sensor
 - Aqara Door and Window Sensor
 - Button

@@ -27,6 +27,9 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
             elif device['model'] == 'gateway':
                 illu_info = SensorInfo('Illuminance', 'illumination', 'lx', 100000, 0, 1)
                 devices.append(XiaomiSensor(device, illu_info, gateway))
+            elif device['model'] == 'sensor_motion.aq2':
+                illu_info = SensorInfo('Illuminance', 'illumination', 'lx', 2000, 0, 1)
+                devices.append(XiaomiSensor(device, illu_info, gateway))
     add_devices(devices)
 
 class SensorInfo(object):
