@@ -75,5 +75,5 @@ class XiaomiSensor(XiaomiDevice):
         if value is None:
             return False
 
-        self.current_value = int(value) * self._value_modifier
+        self.current_value = round(int(value) * self._value_modifier, 2)
         return True
