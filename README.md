@@ -14,6 +14,7 @@ This is an complete Home Assistant component for Xiaomi Gateway. It allows you t
 - Door and Window Sensor
 - Aqara Door and Window Sensor
 - Button
+- Aqara Button
 - Plug
 - Aqara Wall Switch (Single)
 - Aqara Wall Switch (Double)
